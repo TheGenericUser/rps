@@ -1,0 +1,97 @@
+def starting_thing():
+    global Number_of_turns, Tied, AI_score, player_score
+    import random
+    RPS = ["rock", "paper", "scissor"]
+    Number_of_turns = eval(input("How many rounds a match?"))
+    player_score = 0
+    AI_score = 0
+    Tied = 0
+    while (True):
+        if Number_of_turns <= 0:
+            ("Choose a number greater than 0")
+            continue
+        else:
+            break
+    def game():
+        global Number_of_turns, Tied, AI_score, player_score
+        for x in range(0, Number_of_turns):
+            AI_choice = random.choice(RPS)
+            # print(AI_choice)
+            # player_choice = input("What do you choose? Rock(R), Paper(P) or Scissor(S)?")
+            # player_choice = player_choice.lower()
+            # print(player_choice)
+            player_choice=random.choice(RPS)
+            # print(player_choice)
+            if player_choice == AI_choice:
+                print(f"The opponent used {AI_choice}")
+                print("It's a tie")
+                Tied += 1
+                Number_of_turns -= 1
+            elif player_choice == "rock" and AI_choice == "paper":
+                print(f"The opponent used {AI_choice}")
+                print("You lost to a being with no brain..what does that make you?")
+                AI_score += 1
+                Number_of_turns -= 1
+            elif player_choice == "paper" and AI_choice == "scissor":
+                print(f"The opponent used {AI_choice}")
+                print("You lost to a being with no brain..what does that make you?")
+                AI_score += 1
+                Number_of_turns -= 1
+            elif player_choice == "scissor" and AI_choice == "rock":
+                print(f"The opponent used {AI_choice}")
+                print("You lost to a being with no brain..what does that make you?")
+                AI_score += 1
+                Number_of_turns -= 1
+            elif player_choice == "rock" and AI_choice == "scissor":
+                print(f"The opponent used {AI_choice}")
+                print("You won. Nice")
+                player_score += 1
+                Number_of_turns -= 1
+            elif player_choice == "paper" and AI_choice == "rock":
+                print(f"The opponent used {AI_choice}")
+                print("You won. Nice")
+                player_score += 1
+                Number_of_turns -= 1
+            elif player_choice == "scissor" and AI_choice == "paper":
+                print(f"The opponent used {AI_choice}")
+                print("You won. Nice")
+                player_score += 1
+                Number_of_turns -= 1
+            else:
+                while True:
+                    print("You wrote something wrong")
+                    game()
+                    break
+
+        def end_thing():
+            print(f"Your score:{player_score}")
+            print(f"AI's score:{AI_score}")
+            print(f"You tied {Tied} times")
+            if player_score > AI_score:
+                print("Congrats! You won!")
+            elif player_score < AI_score:
+                print("Wow. You managed to lose to a computer. Shame")
+            else:
+                print("Guess it's better than losing?")
+
+        end_thing()
+    game()
+
+starting_thing()
+
+def play_again_thing():
+    while True:
+        play_again = input("Want to play again? Yes or No")
+        play_again = play_again.lower()
+        if play_again == "yes":
+            starting_thing()
+            continue
+        elif play_again == "no":
+            print("Your loss!")
+            break
+        else:
+            print("You did something wrong!")
+            play_again_thing()
+            break
+
+play_again_thing()
